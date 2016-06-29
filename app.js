@@ -15,7 +15,7 @@ var flash = require('connect-flash');
 var session = require('express-session');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var users = require('./routes/user');
 
 var configDB = require('./config/database.js');
 mongoose.connect(configDB.url);
@@ -52,7 +52,6 @@ app.use(function(req, res, next) {
     err.status = 404;
     next(err);
 });
-
 
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {

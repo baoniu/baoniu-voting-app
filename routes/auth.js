@@ -5,11 +5,11 @@ var passport = require('passport');
 
 module.exports = function(router) {
 
-    router.get('/profile', isLoggedIn, function(req, res) {
-        res.render('profile.ejs', { user: req.user });
+    router.get('/user/profile', isLoggedIn, function(req, res) {
+        res.render('user/profile.ejs', { user: req.user });
     });
 
-    router.get('/logout', function(req, res) {
+    router.get('/auth/logout', function(req, res) {
         req.logout();
         res.redirect('/');
     });
@@ -17,7 +17,7 @@ module.exports = function(router) {
     router.get('/auth/github', passport.authenticate('github'));
 
     router.get('/auth/github/callback', passport.authenticate('github', {
-        successRedirect: '/profile',
+        successRedirect: '/user/profile',
         failureRedirect: '/',
     }));
 

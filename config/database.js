@@ -1,3 +1,3 @@
 module.exports = {
-  url: 'mongodb://localhost/polls',
+  url: 'mongodb://root:root@ds023052.mlab.com:23052/baoniu',
 };

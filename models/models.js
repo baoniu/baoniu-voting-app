@@ -1,11 +1,9 @@
 /**
  * Created by apple on 16/6/27.
  */
-var mongoose = require('mongoose');
-
-var pollSchema = new mongoose.Schema({
-    pool:{
-        creator: String,
+module.exports = {
+    poll:{
+        user_id: String,
         question: String,
         choices: [{
             text: String,
@@ -14,8 +12,7 @@ var pollSchema = new mongoose.Schema({
     },
     ip: {
         pool_question_id: String,
+        user_id: String,
         ip: String
     }
-});
-
-module.exports = mongoose.model('Poll', pollSchema);
+};

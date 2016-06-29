@@ -1,31 +1,12 @@
-<% include partials/head %>
-
-
-<!--<div class="container">-->
-
-<!--<a href="/login" class="btn btn-default"><span class="fa fa-sign-in"></span> Login</a>-->
-<!--<a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Signup</a>-->
-<!--<a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</a>-->
-<!--<a href="/auth/twitter" class="btn btn-info"><span class="fa fa-twitter"></span> Twitter</a>-->
-<!--<a href="/auth/github" class="btn btn-warning"><span class="fa fa-github"></span> GitHub</a>-->
-<!--<a href="/auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span> Google</a>-->
-
-<!--</div>-->
-<!--</div>-->
+<% include ../partials/head %>
 
 
 <div class="container">
   <div class="">
-    <h2>投票列表</h2>
-    <p>点击可以查看投票结果或进行投票，
-      <%if(!user){%>
-      <a href="/auth/github" class="btn btn-success btn-sm"><i class="fa fa-github"></i> 登陆</a>
-      <%} else {%>
-      登陆<%}%>后你也可以创建新的投票事项</p>
-    <p>nodejs + express + passport + mongodb</p><hr>
-    <div class="row poll-list">
-      <%if(doc.length>0){%>
-      <%for(var i = 0; i<doc.length; ++i){%>
+    <h3>我创建的投票列表</h3><hr>
+    <div class="poll-list">
+      <% if(doc.length >0) {%>
+      <%for (var i=0; i<doc.length; ++i) {%>
       <div class="col-xs-6 col-md-2 grid-item">
         <a class="thumbnail" href="/poll/detail/<%=doc[i]._id%>">
           <img alt="<%=doc[i].question%>" data-src="holder.js/100%x180" style="height: 180px; width: 100%; display: block;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTM0IiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDEzNCAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTU5Yjc2YmExYSB0ZXh0IHsgZmlsbDojYWFhYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1NTliNzZiYTFhIj48cmVjdCB3aWR0aD0iMTM0IiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2VlZWVlZSIvPjxnPjx0ZXh0IHg9IjEwLjU0MTY2NjAzMDg4Mzc5IiB5PSI3MC42NSI+54K55Ye75p+l55yL5oqV56Wo57uT5p6cPC90ZXh0PjwvZz48Zz48dGV4dCB4PSIzMC41NDE2NjYwMzA4ODM3OSIgeT0iOTAuNjUiPuaIlui/m+ihjOaKleelqDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
@@ -33,13 +14,12 @@
         </a>
       </div>
       <%}%>
-      <%} else {%>
-      暂无投票数据...你来 <a href="/poll/new" class="btn btn-info btn-xs">添加第一个</a> &nbsp;？
+      <% }else {%>
+      <p>你还未添加任何投票事项…… <a href="/poll/new" class="btn btn-success btn-xs">立即添加</a> </p>
       <%}%>
     </div>
   </div>
 </div>
-
 
 <script>
   window.onload = function(){
@@ -48,4 +28,4 @@
     });
   }
 </script>
-<% include partials/foot %>
+<% include ../partials/foot %>
