@@ -21,12 +21,15 @@ var configDB = require('./config/database.js');
 mongoose.connect(configDB.url);
 
 var app = express();
+app.settings.env = 'production';
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+//app.use(logger('dev'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -62,6 +65,8 @@ if (app.get('env') === 'development') {
         });
     });
 }
+
+console.log(app.get('env'));
 
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
