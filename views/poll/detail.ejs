@@ -6,7 +6,7 @@
         <div>
             <h3>
                 详情 - <%=doc.question%>
-                <%if(user._id == doc.user_id){%>
+                <%if(user && user._id == doc.user_id){%>
                 <a href="/poll/delete/<%=doc._id%>" class="btn btn-warning" style="float: right">删除</a>
                 <%}%>
             </h3>
@@ -111,11 +111,11 @@
         });
 
         $('#select').on('change', function (e) {
-           if($('#select').val() == 'new') {
-               $('#input').show();
-           } else {
-               $('#input').hide();
-           }
+            if($('#select').val() == 'new') {
+                $('#input').show();
+            } else {
+                $('#input').hide();
+            }
         });
     }
 </script>
