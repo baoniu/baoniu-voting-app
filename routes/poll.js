@@ -21,7 +21,7 @@ module.exports = function(router){
 
     router.get('/poll/delete/:id', isLoggedIn, function(req, res, next){
         Polls.remove({_id: req.params.id, user_id: req.user._id}, function(error, doc){
-            if(error) {
+            if(error || !doc) {
                 req.flash('error','删除失败');
                 res.redirect('/poll/detail/' + req.params.id);
             } else {
